@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="nuxeo.extensions.actions" version="1.0.0">
+  <require>org.nuxeo.runtime.started</require>
+  <extension target="org.nuxeo.ecm.platform.actions.ActionService" point="actions">
+    <action id="AdminTab" link="/incl/adminTab.xhtml"
+     type="admin_rest_document_link"
+     label="Development" order="150">
+     <category>NUXEO_ADMIN</category>
+     <filter-id>only_for_manager</filter-id>
+   </action>
+   <action id="Logs" link="/incl/Logs.xhtml" label="Logs"
+      order="0" type="rest_document_link">
+      <category>AdminTab_sub_tab</category>
+      <filter-id>only_for_manager</filter-id>
+    </action>
+  </extension>
+</component>

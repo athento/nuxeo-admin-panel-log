@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component name="nuxeo.extensions.contentViews" version="1.0.0">
+  <require>org.nuxeo.runtime.started</require>
+  <extension target="org.nuxeo.ecm.platform.ui.web.ContentViewService" point="contentViews">
+    <contentView name="ContentViewTab1">
+      <genericPageProvider class="org.nuxeo.elasticsearch.provider.ElasticSearchNxqlPageProvider">
+        <property name="coreSession">#{documentManager}</property>
+        <whereClause>
+          <predicate parameter="ecm:fulltext" operator="FULLTEXT">
+            <field schema="ContentViewTab1_cv" name="system_fulltext"/>
+          </predicate>
+          <fixedPart>ecm:mixinType != 'HiddenInNavigation' AND ecm:isCheckedInVersion = 0 AND ecm:currentLifeCycleState != 'deleted'</fixedPart>
+        </whereClause>
+        <searchDocumentType>ContentViewTab1_cv</searchDocumentType>
+        <sort column="dc:title" ascending="true"/>
+        <pageSize>10</pageSize>
+      </genericPageProvider>
+      <searchLayout name="ContentViewTab1_cv@cvLayout"/>
+      <useGlobalPageSize>true</useGlobalPageSize>
+      <refresh>
+        <event>documentChanged</event>
+        <event>documentChildrenChanged</event>
+      </refresh>
+      <cacheKey>#{currentDocument.id}</cacheKey>
+      <cacheSize>10</cacheSize>
+      <selectionList>CURRENT_SELECTION</selectionList>
+      <showTitle>false</showTitle>
+      <showFilterForm>true</showFilterForm>
+      <showPageSizeSelector>true</showPageSizeSelector>
+      <showRefreshCommand>true</showRefreshCommand>
+      <actions category="CURRENT_SELECTION_LIST"/>
+      <actions category="cv_actions@ContentViewTab1"/>
+      <resultLayouts>
+        <layout name="ContentViewTab1@cvListingLayout" title="document_listing" translateTitle="true" iconPath="/icons/document_listing_icon.png" showCSVExport="true" showEditColumns="true" showSpreadsheet="true"/>
+      </resultLayouts>
+      <resultColumns>#{searchDocument.cvd.selectedLayoutColumns}</resultColumns>
+      <resultLayout>#{searchDocument.cvd.resultLayoutName}</resultLayout>
+    </contentView>
+  </extension>
+</component>

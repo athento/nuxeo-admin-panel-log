@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Require-Bundle: org.nuxeo.runtime
+Bundle-Vendor: Nuxeo
+Bundle-Version: 1.0.0
+Bundle-Name: athento.DownloadLog
+Nuxeo-Component: OSGI-INF/actions-contrib.xml,OSGI-INF/contentViews-co
+ ntrib.xml,OSGI-INF/core-types-contrib.xml,OSGI-INF/layouts-contrib.xm
+ l,OSGI-INF/widgettypes-contrib.xml
+Bundle-ManifestVersion: 2
+Created-By: Athento
+Bundle-SymbolicName: athento.DownloadLog
+
