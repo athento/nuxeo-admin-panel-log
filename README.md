@@ -10,6 +10,6 @@ You just have to compile the pom.xml using Maven and deploy the plugin in. To do
 
 	cd nuxeo-admin-panel-log-master
 	mvn clean install
-	cp target/Download_Log-*.jar $NUXEO_HOME/nxserver/plugins
+	cp target/athento-nx-admin-log-*.jar $NUXEO_HOME/nxserver/plugins
 
 And then, restart your nuxeo server and enjoy.
