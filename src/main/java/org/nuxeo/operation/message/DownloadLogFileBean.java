@@ -2,6 +2,7 @@ package org.nuxeo.operation.message;
 
 import java.io.File;
 
+import org.apache.commons.lang.StringUtils;
 import org.jboss.seam.ScopeType;
 import org.jboss.seam.annotations.Name;
 import org.jboss.seam.annotations.Scope;
@@ -15,7 +16,7 @@ import org.nuxeo.runtime.api.Framework;
 
 @Name("download_log")
 @Scope(ScopeType.CONVERSATION)
-public class Download_log {
+public class DownloadLogFileBean {
 
 	private String input;
 
@@ -23,10 +24,10 @@ public class Download_log {
 		// handle form submission
 		/* output = "Caught message: " + input; */
 		String pathLog;
-		if (input.equals("")) {
+		if (StringUtils.isEmpty(input)) {
 			pathLog = "/var/log/nuxeo/server.log";
 		} else {
-			pathLog = "/var/log/nuxeo/server.log." + input;
+			pathLog = input;
 		}
 		File logFile = new File(pathLog);
 		if (logFile.exists()) {
